@@ -27,7 +27,7 @@ public class StartMinimesos extends AbstractMinimesosMojo
         startMinimesos(builder.build());
 
         MesosCluster mesosCluster = getMinimesosCluster().orElseThrow(() -> new IllegalStateException("Cannot obtain reference to minimesos cluster."));
-        project.getProperties().setProperty("zookeeper_ip_port", mesosCluster.getZkContainer().getFormattedZKAddress().replace("zk://", ""));
+        project.getProperties().setProperty("zookeeper_ip", mesosCluster.getZkContainer().getIpAddress());
         project.getProperties().setProperty("mesos_master_ip", mesosCluster.getMasterContainer().getIpAddress());
     }
 }
