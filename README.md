@@ -36,3 +36,23 @@ Goal    | Description
 ---     | ---
 `start` | Start the minimesos cluster
 `stop`  | Stop the minimesos cluster
+
+## Exported maven properties
+Property            | Description
+---                 | ---
+`zookeeper_ip`      | The IP address of the ZooKeeper container
+`mesos_master_ip`   | The IP address of the Mesos master container
+
+### Using exported maven properties
+Use the properties to import into other variables. For example, when testing a Spring application, you will want to inject the maven properties into System properties:
+
+```
+<plugin>
+    <artifactId>maven-failsafe-plugin</artifactId>
+    <configuration>
+        <systemProperties>
+            <mesos.zookeeper.server>${zookeeper_ip}:2181</mesos.zookeeper.server>
+            <mesos.master>${mesos_master_ip}:5050</mesos.master>
+        </systemProperties>
+    ...
+```
