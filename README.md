@@ -8,26 +8,36 @@ Note this has not been released yet. The artifact does not exist on maven centra
 Add the following plugin to your pom:
 
 ```
-<plugin>
-    <groupId>com.containersolutions.minimesos</groupId>
-    <artifactId>minimesos-maven-plugin</artifactId>
-    <executions>
-        <execution>
-            <id>start</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-                <goal>start</goal>
-            </goals>
-        </execution>
-        <execution>
-            <id>stop</id>
-            <phase>post-integration-test</phase>
-            <goals>
-                <goal>stop</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
+<pluginRepositories>
+    <pluginRepository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </pluginRepository>
+</pluginRepositories>
+
+<build>
+    <plugins>
+        <plugin>
+        <groupId>com.github.ContainerSolutions</groupId>
+        <artifactId>minimesos-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>start</id>
+                    <phase>pre-integration-test</phase>
+                    <goals>
+                        <goal>start</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>stop</id>
+                    <phase>post-integration-test</phase>
+                    <goals>
+                        <goal>stop</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        ...
 ```
 
 It is recommended that you also specify the version of the plugin.
