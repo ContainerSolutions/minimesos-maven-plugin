@@ -18,12 +18,18 @@ public abstract class AbstractMinimesosMojo extends AbstractMojo {
         destroyMinimesos(); // Kill previous minimesos if running
         MesosCluster mesosCluster = new MesosCluster(architecture);
         mesosClusterState.put(getPluginContext(), mesosCluster);
+
+        getLog().info("Starting minimesos");
         mesosCluster.start();
+        getLog().info("Started minimesos");
     }
 
     protected void destroyMinimesos() {
-        getMinimesosCluster().ifPresent(MesosCluster::stop);
-        mesosClusterState.delete(getPluginContext());
+        mesosClusterState.delete(getPluginContext());   // Always delete, no matter what
+        getMinimesosCluster().ifPresent(mesosCluster -> {
+            getLog().info("Stopping minimesos");
+            mesosCluster.stop();
+        });
     }
 
     protected Optional<MesosCluster> getMinimesosCluster() {
