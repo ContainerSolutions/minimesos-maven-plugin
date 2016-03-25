@@ -100,3 +100,4 @@ git commit -m "Set version number for release of $VERSION"
 git tag $VERSION
 git push --set-upstream origin release/$VERSION && git push origin $VERSION
 ```
+Do not create a GH release. Travis will do this for you.
