@@ -13,6 +13,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
+import java.util.stream.Collectors;
 
 /**
  * Start the minimesos cluster
@@ -33,11 +34,13 @@ public class StartMinimesos extends AbstractMinimesosMojo
     {
         ClusterArchitecture.Builder configBuilder;
         if (configFile == null) {
+            getLog().info("Using default configuration");
             configBuilder = new ClusterArchitecture.Builder();
             configBuilder.withZooKeeper();
             configBuilder.withMaster();
             configBuilder.withAgent();
         } else {
+            getLog().info("Loading configuration file...");
             configBuilder = parseConfigFile();
         }
 
@@ -48,8 +51,10 @@ public class StartMinimesos extends AbstractMinimesosMojo
     }
 
     private void writeProperties(MesosCluster mesosCluster) {
+        getLog().info("Writing properties");
         project.getProperties().setProperty("zookeeper_ip", mesosCluster.getZkContainer().getIpAddress());
         project.getProperties().setProperty("mesos_master_ip", mesosCluster.getMasterContainer().getIpAddress());
+        getLog().debug(project.getProperties().entrySet().stream().map(entry -> entry.getKey().toString() + "=" + entry.getValue().toString()).collect(Collectors.joining("\n")));
     }
 
     private ClusterArchitecture.Builder parseConfigFile() {
