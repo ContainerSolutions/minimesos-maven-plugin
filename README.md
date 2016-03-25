@@ -86,3 +86,15 @@ Use the properties to import into other variables. For example, when testing a S
         </systemProperties>
     ...
 ```
+
+# Releasing
+To release:
+```
+export VERSION=${THE_VERSION}
+git checkout master
+git pull
+git checkout -b release/$VERSION
+mvn versions:set -DnewVersion=$VERSION
+git tag $VERSION
+git push --set-upstream origin release/$VERSION
+```
