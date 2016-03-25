@@ -90,11 +90,13 @@ Use the properties to import into other variables. For example, when testing a S
 # Releasing
 To release:
 ```
-export VERSION=${THE_VERSION}
 git checkout master
-git pull
+git fetch origin
+git reset --hard origin/master
 git checkout -b release/$VERSION
 mvn versions:set -DnewVersion=$VERSION
+git add pom.xml
+git commit -m "Set version number for release of $VERSION"
 git tag $VERSION
-git push --set-upstream origin release/$VERSION
+git push --set-upstream origin release/$VERSION && git push origin $VERSION
 ```
