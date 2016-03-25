@@ -1,9 +1,6 @@
 # minimesos-maven-plugin
 A Maven plugin for minimesos. Control your minimesos cluster from your pom.
 
-# PRE RELEASE
-Note this has not been released yet. The artifact does not exist on maven central.
-
 # Quick start
 Add the following plugin to your pom:
 
@@ -41,6 +38,12 @@ Add the following plugin to your pom:
 ```
 
 It is recommended that you also specify the version of the plugin. Note that only tagged versions of the plugin will work when downloaded from jitpack. This is because Maven plugins require the version number specified in your project and the version number inside the plugin to match exactly.
+
+## OSX (or VM) users
+For people using a VM to host the docker daemon, ensure you setup a route to route traffic to the containers. Without this your cluster will appear to "doesn't start". Use the following command:
+```
+$ sudo route delete 172.17.0.0/16; sudo route -n add 172.17.0.0/16 $(docker-machine ip ${DOCKER_MACHINE_NAME})
+```
 
 # Usage
 ## Goals
