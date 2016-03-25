@@ -3,10 +3,6 @@ language: java
 jdk:
   - oraclejdk8
 
-before_deploy:
-  - "mvn versions:set -DnewVersion=$TRAVIS_TAG"
-  - "mvn -DskipTests package install"
-
 deploy:
   provider: releases
   api_key: "$GITHUB_OAUTH_TOKEN"
@@ -16,3 +12,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+
