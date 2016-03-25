@@ -40,7 +40,7 @@ Add the following plugin to your pom:
         ...
 ```
 
-It is recommended that you also specify the version of the plugin.
+It is recommended that you also specify the version of the plugin. Note that only tagged versions of the plugin will work when downloaded from jitpack. This is because Maven plugins require the version number specified in your project and the version number inside the plugin to match exactly.
 
 # Usage
 ## Goals
