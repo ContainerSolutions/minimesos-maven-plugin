@@ -11,7 +11,6 @@ Add the following plugin to your pom:
 <plugin>
     <groupId>com.containersolutions.minimesos</groupId>
     <artifactId>minimesos-maven-plugin</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <executions>
         <execution>
             <id>start</id>
@@ -30,12 +29,33 @@ Add the following plugin to your pom:
     </executions>
 </plugin>
 ```
+
+It is recommended that you also specify the version of the plugin.
+
 # Usage
 ## Goals
 Goal    | Description
 ---     | ---
 `start` | Start the minimesos cluster
 `stop`  | Stop the minimesos cluster
+
+## Configuration
+Setting         | Description
+---             | ---
+`configFile`    | A relative or absolute path to a minimesos configuration file (a.k.a minimesosFile)
+
+For example:
+```
+<plugin>
+    <groupId>com.containersolutions.minimesos</groupId>
+    <artifactId>minimesos-maven-plugin</artifactId>
+    <configuration>
+        <configFile>./src/test/resources/minimesosFile</configFile>
+    </configuration>
+    ...
+```
+
+Settings may also be passed as Maven arguments. E.g. `mvn verify -DconfigFile=./myConfig`
 
 ## Exported maven properties
 Property            | Description

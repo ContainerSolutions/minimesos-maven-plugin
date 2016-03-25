@@ -5,8 +5,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
 /**
- * Says "Hi" to the user.
- *
+ * Stop the minimesos cluster
  */
 @Mojo( name = "stop", defaultPhase = LifecyclePhase.POST_INTEGRATION_TEST)
 public class StopMinimesos extends AbstractMinimesosMojo
