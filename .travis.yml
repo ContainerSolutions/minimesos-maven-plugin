@@ -5,6 +5,7 @@ jdk:
 
 before_deploy:
   - "mvn versions:set -DnewVersion=$TRAVIS_TAG"
+  - "mvn -DskipTests package install"
 
 deploy:
   provider: releases
