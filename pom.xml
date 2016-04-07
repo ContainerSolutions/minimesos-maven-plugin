@@ -8,8 +8,25 @@
   <packaging>maven-plugin</packaging>
 
   <name>minimesos Maven Plugin</name>
-
+  <description>Maven plugin for maintaining a Minimesos cluster</description>
   <url>http://minimesos.org</url>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Dr. Philip N. Winder</name>
+      <email>philip.winder@container-solutions.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:ContainerSolutions/minimesos-maven-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:ContainerSolutions/minimesos-maven-plugin.git</developerConnection>
+    <url>git@github.com:ContainerSolutions/minimesos-maven-plugin.git</url>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,13 +61,6 @@
       <version>0.7.1</version>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-  </repositories>
 
   <build>
     <plugins>
